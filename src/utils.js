@@ -71,7 +71,7 @@ export const getProviders = async () => {
  * @param {object} options  Fetch options
  * @returns {Promise} Result of the fetch
  */
-export const request = async (url, options) => {
+export const httpRequest = async (url, options) => {
   const response = await fetch(url, options)
 
   if (response.ok) {

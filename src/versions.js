@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { URL } from 'node:url'
 
-import { request } from '#src/utils.js'
+import { httpRequest } from '#src/utils.js'
 
 /**
  * @typedef {object} Versions
@@ -17,7 +17,7 @@ import { request } from '#src/utils.js'
  * @returns {Versions} latest abd current version
  */
 export default async () => {
-  const { latest } = await request(
+  const { latest } = await httpRequest(
     'https://registry.npmjs.org/-/package/@vafanassieff/email-alias/dist-tags'
   )
 

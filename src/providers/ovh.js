@@ -1,5 +1,7 @@
 import { createHash } from 'node:crypto'
 
+import { httpRequest } from '#src/utils.js'
+
 const endpoints = {
   'ovh-eu': 'eu.api.ovh.com',
   'ovh-us': 'api.us.ovhcloud.com',
@@ -43,17 +45,7 @@ const request = async (path, method, parameters, config) => {
         .digest('hex'),
   }
 
-  const response = await fetch(url, options)
-
-  if (response.ok) {
-    return response.json()
-  } else {
-    const data = await response.json()
-
-    const error = data.message ? new Error(data.message) : new Error(data)
-
-    throw error
-  }
+  return httpRequest(url, options)
 }
 
 /**
