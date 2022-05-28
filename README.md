@@ -1,2 +1,4 @@
-# alias-ovh
-Create an ovh email alias easy
+# mail-alias
+
+Create a mail alias easly from CLI !
+
