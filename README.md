@@ -1,4 +1,3 @@
-# mail-alias
+# email-alias
 
-Create a mail alias easly from CLI !
-
+Create a email alias easly from CLI !

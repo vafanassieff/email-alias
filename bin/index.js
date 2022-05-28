@@ -30,7 +30,7 @@ provider
   .argument('<provider>', 'Provider to use')
   .action(set)
 
-program.name('mail-alias').description('Manage email aliass').version('0.1.0')
+program.name('email-alias').description('Manage email aliass').version('0.1.0')
 
 program.command('list').description('List current aliass').action(list)
 

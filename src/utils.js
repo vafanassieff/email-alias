@@ -21,7 +21,7 @@ export const fileExists = (path) => {
  */
 export const loadConfig = async () => {
   if (!(await fileExists(config.path))) {
-    throw new Error('You need to run mail-alias provider configure first')
+    throw new Error('You need to run email-alias provider configure first')
   }
 
   return fs.readFile(config.path).then(JSON.parse)

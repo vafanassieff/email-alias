@@ -1,20 +1,20 @@
 {
-  "name": "@vafanassieff/mail-alias",
-  "version": "0.1.0",
-  "description": "Create an email alias !",
+  "name": "@vafanassieff/email-alias",
+  "version": "0.1.1",
+  "description": "Create a email alias to keep you real email hidden !",
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:vafanassieff/mail-alias.git"
+    "url": "git@github.com:vafanassieff/email-alias.git"
   },
   "author": "Victor Afanassieff <victor@afanassieff.com>",
   "publishConfig": {
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/vafanassieff/mail-alias/issues"
+    "url": "https://github.com/vafanassieff/email-alias/issues"
   },
-  "homepage": "https://github.com/vafanassieff/mail-alias#readme",
+  "homepage": "https://github.com/vafanassieff/email-alias#readme",
   "keywords": [
     "email",
     "alias",

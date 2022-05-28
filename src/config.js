@@ -5,5 +5,5 @@ import path from 'node:path'
  * App default configuration
  */
 export default {
-  path: path.join(os.homedir(), '.mail-alias.json'),
+  path: path.join(os.homedir(), '.email-alias.json'),
 }
