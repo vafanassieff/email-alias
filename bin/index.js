@@ -2,7 +2,10 @@
 
 import 'zx/globals'
 import console from 'node:console'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 import process from 'node:process'
+import { URL } from 'node:url'
 
 import { Command } from 'commander'
 
@@ -18,6 +21,12 @@ const provider = new Command('provider')
 
 $.verbose = false
 
+const { version } = await fs
+  .readFile(
+    path.join(new URL('.', import.meta.url).pathname, '../package.json')
+  )
+  .then(JSON.parse)
+
 provider
   .command('configure')
   .description('Configure a provider')
@@ -30,7 +39,7 @@ provider
   .argument('<provider>', 'Provider to use')
   .action(set)
 
-program.name('email-alias').description('Manage email alias').version('0.1.0')
+program.name('email-alias').description('Manage email alias').version(version)
 
 program.command('list').description('List current alias').action(list)
 
@@ -54,6 +63,10 @@ program.exitOverride()
 try {
   await program.parseAsync(process.argv)
 } catch (error) {
-  console.error(error.message)
-  process.exit(-1)
+  if (error.constructor.name === 'CommanderError') {
+    process.exit(error.exitCode)
+  } else {
+    console.error(error.message)
+    process.exit(-1)
+  }
 }

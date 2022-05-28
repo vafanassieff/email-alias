@@ -1,6 +1,6 @@
 {
   "name": "@vafanassieff/email-alias",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Create a email alias to keep you real email hidden !",
   "main": "src/index.js",
   "repository": {
