@@ -63,3 +63,24 @@ export const getProviders = async () => {
   const files = await fs.readdir(providerFolder)
   return files.map((p) => p.split('.js')[0])
 }
+
+/**
+ * Fetch an URL with options
+ *
+ * @param {string} url Url to fetch
+ * @param {object} options  Fetch options
+ * @returns {Promise} Result of the fetch
+ */
+export const request = async (url, options) => {
+  const response = await fetch(url, options)
+
+  if (response.ok) {
+    return response.json()
+  } else {
+    const data = await response.json()
+
+    const error = data.message ? new Error(data.message) : new Error(data)
+
+    throw error
+  }
+}

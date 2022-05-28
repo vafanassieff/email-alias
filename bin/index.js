@@ -2,10 +2,7 @@
 
 import 'zx/globals'
 import console from 'node:console'
-import fs from 'node:fs/promises'
-import path from 'node:path'
 import process from 'node:process'
-import { URL } from 'node:url'
 
 import { Command } from 'commander'
 
@@ -15,6 +12,7 @@ import list from '#src/base/list.js'
 import printConfiguration from '#src/base/print-configuration.js'
 import remove from '#src/base/remove.js'
 import configure from '#src/provider/configure.js'
+import versions from '#src/versions.js'
 
 const program = new Command()
 
@@ -22,11 +20,7 @@ const provider = new Command('provider')
 
 $.verbose = false
 
-const { version } = await fs
-  .readFile(
-    path.join(new URL('.', import.meta.url).pathname, '../package.json')
-  )
-  .then(JSON.parse)
+const { current } = await versions()
 
 provider
   .command('configure')
@@ -34,7 +28,7 @@ provider
   .argument('<provider>', 'Provider to configure')
   .action(configure)
 
-program.name('email-alias').description('Manage email alias').version(version)
+program.name('email-alias').description('Manage email alias').version(current)
 
 program.command('list').description('List current alias').action(list)
 
