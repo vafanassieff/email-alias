@@ -27,6 +27,8 @@ To update the package run `npm update -g @vafanassieff/email-alias`
 
 ## Usage
 
+Start by using the command `email-alias configuration` to choose your default to email and your default provider
+
 ```Shell
 Usage: email-alias [options] [command]
 

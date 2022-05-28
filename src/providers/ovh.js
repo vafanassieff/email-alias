@@ -71,10 +71,12 @@ const request = async (path, method, parameters, config) => {
  * @returns {OvhConfiguration} User OVH configuration
  */
 export const configure = async () => {
-  const endpoint = await question('Which api endpoint should we use ? ')
+  const endpoint = await question('Which api endpoint should we use ? ', {
+    choices: Object.keys(endpoints),
+  })
 
   if (!endpoint) {
-    throw new Error('You need a endpoint', Object.keys(endpoints))
+    throw new Error('You need a endpoint')
   }
 
   const applicationKey = await question('What is your OVH application key ? ')
@@ -152,7 +154,7 @@ export const list = async (config) => {
  * @param {OvhConfiguration} config OVH configuration
  * @returns {Array<string>} List of alias
  */
-export const add = async ({ from, to }, config) => {
+export const add = async ({ from, to }, config, { defaultTo }) => {
   if (!from.includes(config.domain)) {
     throw new Error(`From address should use the ${config.domain} domain`)
   }
@@ -160,7 +162,7 @@ export const add = async ({ from, to }, config) => {
   await request(
     `/email/domain/${config.domain}/redirection`,
     'POST',
-    { from, to, localCopy: false },
+    { from, to: to || defaultTo, localCopy: false },
     config
   )
 }

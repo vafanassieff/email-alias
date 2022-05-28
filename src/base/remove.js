@@ -11,7 +11,7 @@ export default async (alias) => {
   const appConfig = await loadConfig()
   const provider = await loadProvider(appConfig.provider)
 
-  await provider.remove(alias, appConfig[appConfig.provider])
+  await provider.remove(alias, appConfig[appConfig.provider], appConfig)
 
   console.log(`Successfully removed ${alias} !`)
 }

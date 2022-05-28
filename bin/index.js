@@ -10,10 +10,11 @@ import { URL } from 'node:url'
 import { Command } from 'commander'
 
 import add from '#src/base/add.js'
+import configuration from '#src/base/configuration.js'
 import list from '#src/base/list.js'
+import printConfiguration from '#src/base/print-configuration.js'
 import remove from '#src/base/remove.js'
 import configure from '#src/provider/configure.js'
-import set from '#src/provider/set.js'
 
 const program = new Command()
 
@@ -33,12 +34,6 @@ provider
   .argument('<provider>', 'Provider to configure')
   .action(configure)
 
-provider
-  .command('set')
-  .description('Set the used provider')
-  .argument('<provider>', 'Provider to use')
-  .action(set)
-
 program.name('email-alias').description('Manage email alias').version(version)
 
 program.command('list').description('List current alias').action(list)
@@ -46,9 +41,19 @@ program.command('list').description('List current alias').action(list)
 program
   .command('add')
   .description('Add a new alias')
-  .requiredOption('--from <string>', 'alias email')
-  .requiredOption('--to <string>', 'Destination email')
+  .argument('<from>', 'alias email')
+  .option('--to <string>', 'Destination email')
   .action(add)
+
+program
+  .command('configuration')
+  .description('Configure the application')
+  .action(configuration)
+
+program
+  .command('print-config')
+  .description('Print the app configuration')
+  .action(printConfiguration)
 
 program
   .command('remove')

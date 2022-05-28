@@ -52,3 +52,14 @@ export const loadProvider = async (name) => {
 
   return import(providerPath)
 }
+
+/**
+ * Get all the supported providers
+ *
+ * @returns {Array<string>} Array of providers name
+ */
+export const getProviders = async () => {
+  const providerFolder = path.join(__dirname, '../src/providers')
+  const files = await fs.readdir(providerFolder)
+  return files.map((p) => p.split('.js')[0])
+}

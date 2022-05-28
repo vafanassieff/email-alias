@@ -8,7 +8,7 @@ import { loadConfig, loadProvider } from '#src/utils.js'
 export default async () => {
   const appConfig = await loadConfig()
   const provider = await loadProvider(appConfig.provider)
-  const list = await provider.list(appConfig[appConfig.provider])
+  const list = await provider.list(appConfig[appConfig.provider], appConfig)
 
   console.log(`Found ${list.length} alias :`)
 
