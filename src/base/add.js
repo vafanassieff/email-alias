@@ -3,7 +3,7 @@ import console from 'node:console'
 import { loadConfig, loadProvider } from '#src/utils.js'
 
 /**
- * Add a new redirecion to the current provider
+ * Add a new redirection to the current provider
  *
  * @param {string} from From address
  * @param {object} params Object
@@ -14,5 +14,5 @@ export default async (from, { to }) => {
   const provider = await loadProvider(appConfig.provider)
 
   await provider.add({ from, to }, appConfig[appConfig.provider], appConfig)
-  console.log(`New alias from ${from} to ${to} !`)
+  console.log(`New alias ${from} to ${to} !`)
 }

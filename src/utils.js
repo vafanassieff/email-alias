@@ -17,7 +17,7 @@ export const fileExists = (path) => {
 }
 
 /**
- * @returns {object} email-alias condiguration object
+ * @returns {object} email-alias configuration object
  */
 export const loadConfig = async () => {
   if (!(await fileExists(config.path))) {
